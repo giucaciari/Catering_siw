@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments/base.html::headerfiles"></head>
+    <body>
+        <header th:replace="fragments/base.html::intestazione"></header>
+        <div class="d-flex align-items-center justify-content-center mt-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header"><h5> Operazioni Buffet</h5></div>
+                <div class="card-body">
+                    <p class="card-text">Gestione di aggiunta e modifica di buffet</p>
+                    <a class="btn btn-outline  my-2 my-sm-0 active mt-3" style="background-color:#4bbdda;" th:href="@{/admin/buffetForm}" >
+                        Aggiungi un Buffet!
+                    </a>
+                    
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" th:each="buffet : ${elencoBuffet}" >	
+                            <div>
+                                <div >
+                                   
+                                    <div>
+                                        <h3 class="card-text" th:text="${buffet.nome}"><strong>Buffet</strong></h3>
+                                        <div class="d-grid gap-2 mx-auto justify-content-center">
+                                            <a class="card-link btn btn-block btn-warning m-1" role="button" th:href="@{/admin/updateBuffet(buffetId=${buffet.id})}">
+                                                Modifica buffet
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a class="card-link btn btn-danger btn-block m-1" role="button" th:href="@{/deleteBuffet(buffetId=${buffet.id})}">
+                                                Elimina Buffet
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    </li>
+                </ul>
+                
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-header"><h5>  Operazioni Chef</h5></div>
+                <div class="card-body">
+                    <p class="card-text">Gestione di aggiunta e modifica di chef</p>
+                    <a class="btn btn-outline  my-2 my-sm-0 active mt-3" style="background-color:#4bbdda;" th:href="@{/admin/chefForm}" >
+                        Aggiungi uno Chef!
+                    </a>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" th:each="chef : ${elencoChef}" >	
+                            <div>
+                                <div >
+                                   
+                                    <div>
+                                        <h3 class="card-text" th:text="${chef.nome} + ${chef.cognome}"><strong>Chef</strong></h3>
+                                        <div class="d-grid gap-2 mx-auto justify-content-center">
+                                            <a class="card-link btn btn-block btn-warning m-1" role="button" th:href="@{/admin/updateChef(chefId=${chef.id})}">
+                                                Modifica Chef
+                                            </a>
+                                        </div>
+                                       <div>
+                                            <a class="card-link btn btn-danger btn-block m-1" role="button" th:href="@{/deleteChef(chefId=${chef.id})}">
+                                                Elimina Chef
+                                            </a>
+                                       </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    </li>
+                </ul>
+                
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-header"><h5> Operazioni Piatti</h5></div>
+                <div class="card-body">
+                    <p class="card-text">Gestione di aggiunta e modifica di piatti</p>
+                    <a class="btn btn-outline  my-2 my-sm-0 active mt-3" style="background-color:#4bbdda;" th:href="@{/admin/piattoForm}" >
+                        Aggiungi un Piatto!
+                    </a>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" th:each="piatto : ${elencoPiatti}" >	
+                            <div>
+                                <div >
+                                   
+                                    <div>
+                                        <h3 class="card-text" th:text="${piatto.nome}"><strong>Piatto</strong></h3>
+                                        <div class="d-grid gap-2 mx-auto justify-content-center">
+                                            <a class="card-link btn btn-block btn-warning m-1 " role="button" th:href="@{/admin/updatePiatto(piattoId=${piatto.id})}">
+                                                Modifica Piatto
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a class="card-link btn btn-danger btn-block m-1" role="button" th:href="@{/deletePiatti(piattoId=${piatto.id})}">
+                                                Elimina Piatto
+                                            </a>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    </li>
+                </ul>
+                
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-header"><h5> Operazioni Ingredienti</h5></div>
+                <div class="card-body">
+                    <p class="card-text">Gestione di aggiunta e modifica di ingredienti</p>
+                    <a class="btn btn-outline  my-2 my-sm-0 active mt-3" style="background-color:#4bbdda;" th:href="@{/admin/ingredienteForm}" >
+                        Aggiungi un Ingrediente!
+                    </a>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" th:each="ingrediente : ${elencoIngredienti}" >	
+                            <div>
+                                <div >
+                                   
+                                    <div>
+                                        <h3 class="card-text" th:text="${ingrediente.nome}"><strong>Ingrediente</strong></h3>
+                                        <div class="d-grid gap-2 mx-auto justify-content-center">
+                                            <a class="card-link btn btn-block btn-warning m-1" role="button" th:href="@{/admin/updateIngrediente(ingredienteId=${ingrediente.id})}">
+                                                Modifica Ingrediente
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a class="card-link btn btn-block btn-danger m-1" role="button" th:href="@{/deleteIngredienti(ingredienteId=${ingrediente.id})}">
+                                                Elimina Ingrediente
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+            
+           
+           
+        
+        
+       
+        
+    </body>
+</html>

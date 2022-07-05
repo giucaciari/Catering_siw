@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/base.html::headerfiles">
+        <link rel="stylesheet" href="../static/css/form.css">
+    </head>
+
+    <body>
+        <header th:replace="fragments/base.html::intestazione"></header>
+        <img class="card-img" th:src="@{https://source.unsplash.com/random/1920x1100/?buffet}" >
+        <div class="container card-img-overlay mt-4">
+
+            <div class=" text-center mt-5 ">
+        
+                <h1 style="color: rgb(224, 134, 49);font-family: Courgette;" >Inserimento Buffet</h1>
+            </div>
+        
+        
+            <div class="row ">
+                <div class="col-lg-7 mx-auto">
+                    <div class="card mt-2 mx-auto p-4 bg-light">
+                        <div class="card-body bg-light">
+                
+                        <div class = "container">
+                            <form id="contact-form" role="form" th:action="@{/admin/buffet}" method="POST" th:object="${buffet}">
+                                <div th:if="${#fields.hasGlobalErrors()}">
+                                    <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore Globale</p>
+                                </div>
+                            
+                    
+                            <div class="controls">
+                    
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_name">Nome *</label>
+                                            <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il nome del buffet *" required="required" th:field="*{nome}" >
+                                            <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="form_message">Descrizione *</label>
+                                            <textarea th:field="*{descr}" id="form_message" name="message" class="form-control" placeholder="Write your description here." rows="4" required="required" >
+                                                </textarea>
+                                                <span th:if="${#fields.hasErrors('descr')}" th:errors="*{descr}"></span>
+                                            </div>
+                    
+                                        </div>
+
+                                        <div class="col-12 mt-3">
+                                            <div class="form-group">
+                                                <label for="form_name">Seleziona Chef</label>
+                                                <div th:if="${chefDisponibili}">
+                                                    <select class="form-select" name="chefScelto" aria-label="Default select example">
+                                                        <option th:each="chef : ${chefDisponibili}" th:value="${chef.id}"><span
+                                                                th:text="${chef.nome}">Nome Chef</span></option>
+                                                    </select>
+                                                </div>
+                                                <div th:unless="${chefDisponibili}">
+                                                    <div class="notification p-3 is-danger">Nessuno Chef disponibile!</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                    
+                    
+                                    <div class="col-md-12">
+                                        
+                                        <input type="submit" class="btn btn-success btn-send  pt-2 btn-block
+                                            " value="Submit Buffet" >
+                                    
+                                    </div>
+                        
+                                </div>
+                    
+                    
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                
+                
+            </div>
+                    <!-- /.8 -->
+                
+         </div>
+                <!-- /.row-->
+            
+            </div>
+        </div>
+    </body>
+</html>
